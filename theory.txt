@@ -1,2 +1,38 @@
 Steganography
-.
+it is practice of representing info within another message in physical object
+
+main principle: maximise the hidden info and minimise the distortion
+
+we can split the steganography in two types based on key
+1. shared key based: this adheres to Kerckhoff's principle
+2. no shared key based: this gives security through obscurity
+
+Embedding and Encryption
+
+embedding = steganography embedding refers to algo process to covertly hide data such that existing data remains
+uneffected and hidden image remains undetected
+
+fundamentals principles and embedding paradigms
+
+two dominant ways:
+1. irreversible embedding: original image is not restored once hidden image is extracted
+2. reversible embedding: orignal image or cover image is recoverable
+
+Embedding algorithm
+1. spatial and transform domain embedding
+    a.least significant bit
+        i. widely used for image and audio
+        ii.it replaces least significant bits of pixel
+        iii. offers high capacity but very sensitive to statistical detection and vulnerable to noise
+    b. Fibonacci & high order decomposition
+        i. selection strategy select pixels and then Fibonacci transform takes place
+        ii. selected pixel ordinary int value (stored in binary) mathematically represented in fibonacci
+            coefficient or planes
+        iii. secret message is embedded in these places or coefficient, if the pattern already exist there is
+              no change in pixel value or else it is changed to produce required pattern
+    c. transform domain embedding
+        i. embeds payload in frequency or wavelet transform coefficient
+    d. Bloch Based Minimum distortion embedding (MDE)
+        i. optimize which block coefficient is modifid within partition to minimize total distortion
+
+Source/ Reference: https://www.emergentmind.com/topics/steganographic-embedding
