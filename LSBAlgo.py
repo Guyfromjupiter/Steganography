@@ -77,7 +77,30 @@ for element in np.nditer(data, op_flags=['readwrite']):
         message_index += 1
 
 
+'''
+my earlier very time consuming idea, well it was the first thing i though up and well thats how it is 
+for element in np.nditer(data):
+    pixel = element.item()
+    pixel_count += 1
+    if pixel_count % 100 == 0:
+        print(pixel_count)
 
+    if message_index < len(Binary):
+        message_bit = Binary[message_index]
+
+        binary_fixed = format(pixel, '08b')
+        last_bit = binary_fixed[-1]
+        if last_bit == Binary[message_index]:
+            OutputData = np.append(OutputData ,element)
+
+        elif last_bit != Binary[message_index]:
+            binary_fixed = binary_fixed[:-1] + message_bit
+            OutputData =np.append(OutputData, int (binary_fixed, 2))
+
+        message_index += 1
+    else:
+        OutputData =  np.append(OutputData, int(element))
+'''
 
 OutputData = data.reshape((hgt, wid))
 OutputImage = Image.fromarray(data , 'L')
