@@ -106,8 +106,8 @@ OutputData = data.reshape((hgt, wid))
 OutputImage = Image.fromarray(data , 'L')
 
 OutputImage.save("StegoImage.png")
-OutputImage = Image.open("StegoImage.png")
-InputImage = Image.open("GreyScaleImage.png")
+OutputImage = Image.open("../testing tools/StegoImage.png")
+InputImage = Image.open("../testing tools/GreyScaleImage.png")
 
 
 
