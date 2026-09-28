@@ -1,0 +1,40 @@
+this is Least significant bit algorithm for steganography
+
+prequisite knowledge
+Image can be shown as 2D array of Red (R), Green (G) Blue (B) and constant (Not necessary here)
+so we can imagine image as
+
+(RGB)(RGB)(RGB)(RGB)(RGB)
+(RGB)(RGB)(RGB)(RGB)(RGB)
+(RGB)(RGB)(RGB)(RGB)(RGB)
+(RGB)(RGB)(RGB)(RGB)(RGB)
+
+so a pixel is something like this
+p(r,g,b)
+
+and each are of int value from 0 to 255 so 0000000 to 11111111
+
+we make changes in Least significant bit because change their changes the int value the least, if we
+change most significant bit, it changes a lot, for example
+
+let pixel value be:
+1. 2 so 0000 0010
+change in LSB: 0000 0011 = 3
+Change in MSB: 1000 0010 = 2+128 = 130
+
+Algorithm
+
+step 1. convert the image to greyscale
+step 2. resize the image if needed
+step 3. Convert the message to its binary format
+step 4. Initialize output image same as input image
+step 5. Traverse through each pixel of the image and do the following:
+        step 5.1. Convert the pixel value to binary
+        step 5.2. Get the next bit of the message to be embedded
+        step 5.3. Create a variable temp
+        step 5.4. If the message bit and the LSB of the pixel are same, set temp = 0
+        step 5.5. If the message bit and the LSB of the pixel are different, set temp = 1
+        step 5.6. This setting of temp can be done by taking XOR of message bit and the LSB of the pixel
+        step 5.7. Update the pixel of output image to input image pixel value + temp
+step 6. Keep updating the output image till all the bits in the message are embedded
+step 7. Finally, write the input as well as the output image to local system

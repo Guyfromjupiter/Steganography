@@ -1,0 +1,97 @@
+Fibonacci Steganography
+Abstract
+1. This is to be done using cellular automata method of fibonacci series steganography method
+2. The secrets bits are embedded into a higher LSB layer
+3. An adaptive adjustment is done to minimise the distortion as much as possible
+4. Employing the game of life, cellular Automaton, to generate the used key stream for encryption and image pixel
+    selection
+5. Capacity Same as classical LSB
+
+We will be using A Secure Adaptive Adjustment Steganographic Algorithm (AAJFIBO)
+three steps:
+1. Pixel Color component is represented in Fibonacci representation to obtain more available bit plane
+2. secret bit are embedded into high LSB layer to obtain higher robustness in comparison with LSB algo
+3. Adjustment is performed which does not modify LSB and thus statistical properties of cover image is not changed
+
+taking tangent here: (*_*)
+what is Robustness?
+Robustness is the ability of a system, method, or structure to maintain stability and function
+correctly despite unexpected changes, variations, or errors
+Robustness in steganography refers to the system's ability to preserve and accurately recover embedded
+secret data despite various image processing attacks or distortions
+
+Now we return:
+
+Fibonacci Decomposition:
+color component in an image is in range from 0 to 255. its 8 bit planes. thus Fibonacci becomes awesome as it introduces
+12 bit planes.
+
+Cellular Automata
+1. Cellular Automata are spatially and temporally discrete. What does this mean? well that's an obvious question
+and well it means that it is spatially and temporally specific. like they are not continuous like
+
+|__|__|__|__|
+|__|__|__|__|
+|__|__|__|__|
+|__|__|__|__|
+
+- here in this grid the space is not continuous but split into smaller spaces.
+- they would be in form of a(0,0), a(0,1), a(0,2) ... a(2,2)
+- Same with temporal, cellular automata doesn't update continuously. every update is one stop of time
+- The concept of cellular Automata was introduced by Von Neumann (there is a pretty story and yes,
+    that would be my next project)
+- Game of life is used AND NOW WHAT IS GAME OF LIFE?
+- well it is a fun little game. there are multiple boxes/ Grid. A box have two states, alive or death
+Rules
+1. Any live cell that is touching fewer than two alive neighbours dies.
+2. any live cell that is touching four or more alive neighbour dies
+3. Any live cell touching two or three alive neighbour does nothing
+4. Any dead cell that is touching exactly three alive neighbours becomes alive
+
+Traditional Fibonacci based steganography
+main algorithm
+1. image pixel's value to is represented in fibonacci presentation
+2. secret bit is then embedded into the fibonacci sequence by LSB ALGO
+3. The f sequence with secret bit is embedded is converted to binary domain before being written to stego- image
+
+We will be using BLUE color image pixel o further reduce distortion
+
+Conceptual Framework of the proposed scheme
+step 1: The password from user to produce the key stream
+step 2: the secret message is encrypted by applying XOR operator to every bit using a generated key stream.
+The selection is represented into Fibonacci representation. The bits are embedded in some layer of LSB layer.
+adjustment algo is applied to reduce algo
+
+step 3: the stego image is transferred to public image sharing services where the user B can download it easily without a
+notice
+step 4: receiver downloads stego image
+step 5: private key is provided by receiver to create the initial data for producing the key stream, the generated key
+stream is used to determine the color component that carry the secret bits
+
+The used color component are  identified by the value of current bit in key stream. if it's  value is 0, the green component
+is selected and vice versa
+
+Well all is fine, but it would be instinctively difficult to understand what the hell is going on, as a CS grads you would
+probably instinctively know how to convert integer to binary
+not how the hell do u do this with fibonacci? Honestly, it's simple
+
+Int = 100
+binary = 0110100
+for fibonacci we have series 233, 144, 89, 55, 34, 21, 13, 8, 5, 3, 2, 1
+now what is the biggest number closest to 100 and doesn't exceed it? 89
+100 - 89 = 11
+what is closest to 11? 8
+11 - 8 = 3
+we also have 3
+now fibonacci representation is
+233, 144, 89, 55, 34, 21, 13, 8, 5, 3, 2, 1
+  0,   0,  1,  0,  0,  0,  0, 1, 0, 1, 0, 0
+
+we get 001000010100 which is 12 bit planes and more space for us.
+
+fredkin's rule
+main rule = x(t+1) = (number of alive neighbours) mod 2
+
+Now the algorithm
+1.
+
