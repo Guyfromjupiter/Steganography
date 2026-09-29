@@ -92,6 +92,20 @@ we get 001000010100 which is 12 bit planes and more space for us.
 fredkin's rule
 main rule = x(t+1) = (number of alive neighbours) mod 2
 
+axis cheat sheet in numpy
+1D Array (axis=0):
+
+The only axis available. Operations will apply across all elements of the array.
+2D Array:
+
+axis=0: Operates along rows (vertically). For example, np.sum(arr_2d, axis=0) calculates the sum of each column.
+axis=1: Operates along columns (horizontally). np.sum(arr_2d, axis=1) calculates the sum of each row.
+3D Array:
+
+axis=0: Operates along the depth (the outermost dimension). Each operation is applied to the 2D arrays stacked along this axis.
+axis=1: Operates along rows within each depth level.
+axis=2: Operates along columns within each depth level.
+
 Now the algorithm
 1.
 
