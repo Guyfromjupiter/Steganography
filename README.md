@@ -1,2 +1,2 @@
-# LSB_Steganography
+# Steganography
 this is python implimentation of my steg
