@@ -1,3 +1,5 @@
+import sys
+
 from PIL import Image
 import numpy as np
 import secrets
@@ -24,7 +26,9 @@ class Fibonacci:
         # in numpy array we can directly do the comparison operator with entire array
 
         simpli_cell = (rArray >= 0.5).astype(np.uint8)
-        print(simpli_cell)
+        key_stream = self.game_of_life(simpli_cell)
+        np.set_printoptions(threshold=sys.maxsize)
+        print(key_stream)
 
     def game_of_life(self, simpli_cell):
         # c = s mod 2, where s being s = n1 + n2 + n3 + n4 +...+ n8
@@ -56,14 +60,12 @@ class Fibonacci:
 
             neigh_count = (up + down + left + right + up_left + up_right + down_left + down_right)
             next_gen = neigh_count % 2
-            tf = np.mean(simpli_cell == next_gen) * 100
+            tf = np.mean(simpli_cell != next_gen) * 100
+            simpli_cell = next_gen
             if tf < 25:
-                key_stremu_rawr = next_gen
                 break
 
-            simpli_cell = next_gen
-
-        key_stream = key_stremu_rawr.flatten()
+        key_stream = simpli_cell.flatten()
         return key_stream
 
 
