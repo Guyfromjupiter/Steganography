@@ -4,8 +4,9 @@ import numpy as np
 # let's concentrate on fibonacci conversion of image lets first print image shall we ?
 from PIL import Image
 Image_Name = input("enter the name of the image : ")
-image = Image.open(Image_Name)
-data = np.array(image.get_flattened_data(), dtype=np.uint8)
+image = Image.open(Image_Name).convert("RGB")
+data = np.array(image, dtype=np.uint8)
+data = data.reshape(-1 , 3)
 # print(data)
 a = np.array([1,1,1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0 ,0 ,0 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,1 ,1 ,1 ,1 ,0
  ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,0 ,1 ,1 ,0 ,1 ,1 ,1 ,1 ,1 ,0 ,1 ,1 ,0 ,0 ,1 ,0 ,0 ,1 ,0 ,1 ,0 ,0 ,0 ,1 ,0 ,0 ,0 ,0 ,0 ,1
@@ -53,9 +54,29 @@ def TopSecretHider(x, i, k):
         for p in range(k + 1, len(X)-1, 2):
             X[p] = 1
 
-    return X
+    tf = vallah_date_pixili(X)
+    attempts = 0
+    max_attempts = 15
+    while not tf and attempts < max_attempts:
+        for i in range(k-1 , -1 , -1):
+            if X[i] == 1:
+                X[i] = 0
+                break
+        for p in range(k + 1, len(X)-1):
+            X[p] = 0
+        for p in range(k + 1, len(X) - 1, 2):
+            X[p] = 1
 
-def validate_pixel(X):
+        tf = vallah_date_pixili(X)
+        attempts += 1
+
+    if not tf:
+        raise ValueError("khel khatam")
+    ans = fibo_to_decimal(X)
+    return ans
+
+
+def vallah_date_pixili(X):
     value = fibo_to_decimal(X)
 
     if not 0 <= value <= 255:
@@ -68,21 +89,22 @@ def validate_pixel(X):
     return True
 
 
+def ISCcombiner(Data , X):
+    for v,  key in enumerate(X):
+        if v>=len(Data):
+            break
+        if key == 0:
+            arr = fibo(Data[v][1])
+            Data[v][1] = TopSecretHider(arr,key,5)
+        elif key == 1:
+            arr = fibo(Data[v][2])
+            Data[v][2] = TopSecretHider(arr,key,5)
 
-pixel = 172
-coefficients = fibo(pixel)
 
-modified = TopSecretHider(coefficients, 1, 4)
 
-print("Original:", pixel)
-print("Before:", coefficients)
-print("After:", modified)
-print("New pixel:", fibo_to_decimal(modified))
-print("Valid:", validate_pixel(modified))
-print("Embedded bit:", modified[4])
 
-        
-        
+
+
 
 
 
